@@ -5,6 +5,8 @@
 
 A client-server application for organizing game schedule and leaderboard for some sport event. There are some players, a game schedule is made by some rules (i plan to make some default scenarios and a possibility to make custom one), a leaderboard is sorted by some other rules (scenarios and a possibility to make custom one) (Game scheduling may depend from previous game results). So, something like challonge.com but with more custom tie-breaks.
 
+Application will be on https://flask-project-shevlopmes-production.up.railway.app/
+
 ## Setup
 
 Describe the steps to set up the environment and run the application. This can be a bash script or docker commands.
