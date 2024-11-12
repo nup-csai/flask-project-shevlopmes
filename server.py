@@ -29,3 +29,5 @@ def allinfo(id,arg):
     return 'Hello Not World!'
 
 
+if __name__ == '__main__':
+    app.run(debug=True)
