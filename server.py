@@ -15,7 +15,7 @@ class Player:
         self.wins += add
     def add_loss(self,add):
         self.losses+=add
-p = [Player("$i","active",0,0) for i in range(5)]
+p = [Player("$i","active") for i in range(5)]
 @app.route('/')
 def home():
     return 'Hello World!'
