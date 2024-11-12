@@ -28,3 +28,5 @@ def home():
 def allinfo(id,arg):
     return a[id].get(arg)
 
+if(__name__=="__main__"):
+    home()
