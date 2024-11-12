@@ -22,5 +22,4 @@ def home():
 @app.route('/getall/<int=id>')
 def allinfo(id):
     return '$p[id].name \n$p[id].status \n$p[id].wins \n$p[id].losses'
-if (__name__ == "__main__"):
-    home()
+
