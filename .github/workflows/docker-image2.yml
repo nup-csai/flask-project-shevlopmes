@@ -15,8 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag first-try
+      run: docker build . --file Dockerfile --tag first-try 
     - name: Run the Docker image
-      run: docker run -d -p 8080:8080 first-try
+      run: docker run -d -p 8080:8080 first-try --name name
     - name: Test
-      run: docker exec first-try python ./client.py
+      run: docker exec name python ./client.py
