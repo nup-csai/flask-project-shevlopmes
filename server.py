@@ -24,7 +24,7 @@ a = [{
 @app.route('/')
 def home():
     return 'Hello World!'
-@app.route('/get/<int=id>/<arg>/')
+@app.route('/get/<int=id>/<string=arg>')
 def allinfo(id,arg):
     return 'Hello Not World!'
 
