@@ -24,9 +24,14 @@ a = [{
 @app.route('/')
 def home():
     return 'Hello World!'
-@app.route('/get/<int=id>/<string=arg>')
+@app.route('/get/<int:id>/<string:arg>')
 def allinfo(id,arg):
-    return 'Hello Not World!'
+    if(id<0 or id >= len(a)):
+        return "ID out of range", 404
+    value =  a[id].get(arg)
+    if value is None:
+        return "Value not found", 404
+    return str(value)
 
 
 if __name__ == '__main__':
