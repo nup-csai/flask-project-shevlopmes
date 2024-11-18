@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Get {{ query }}</title>
 </head>
 <body>
-$END$
+{%if id == -1 %}
+<h2>{{ id }} is out of range</h2>
+{% elif id == -2 %}
+<h2>{{ query }} of participant is not found</h2>
+{% else %}
+<h2>{{ query }} of participant with number {{ id }} is {{ name }}</h2>
+{% endif %}
+<script>
+    console.log("{{ name }}");
+</script>
 </body>
+
 </html>

@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 a = [{
@@ -27,11 +27,11 @@ def home():
 @app.route('/get/<int:id>/<string:arg>')
 def allinfo(id,arg):
     if(id<0 or id >= len(a)):
-        return "ID out of range", 404
+        return render_template('first.html',id=-1,name='',query = arg), 404
     value =  a[id].get(arg)
     if value is None:
-        return "Value not found", 404
-    return str(value)
+        return render_template('first.html',id=-2,name='', query=arg), 404
+    return render_template('first.html',id=id, name=value, query=arg)
 
 
 if __name__ == '__main__':
