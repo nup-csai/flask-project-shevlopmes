@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get all {{ query }}</title>
+</head>
+    <body>
+    {% for i, value in enumerate(values) %}
+    {% if value is none %}
+    <li>{{ query }} of participant with ID number {{ i }} is not found</li>
+    {% else %}
+    <li>{{ query }} of participant with ID number {{ i }} is {{ value }}</li>
+    {% endif %}
+    {% endfor %}
+<script>
+    console.log("{{ values }}");
+</script>
+</body>
+
+</html>

@@ -33,6 +33,14 @@ def allinfo(id,arg):
         return render_template('first.html',id=-2,name='', query=arg), 404
     return render_template('first.html',id=id, name=value, query=arg)
 
+@app.route('/all/<string:arg>')
+def outputall(arg):
+    output = []
+    for i in range(len(a)):
+        output.append(a[i].get(arg))
+    return render_template('second.html',values=output, query=arg, enumerate=enumerate)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
