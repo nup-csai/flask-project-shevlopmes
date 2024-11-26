@@ -67,9 +67,21 @@ def add_player(contest_id):
     else:
         return render_template('added.html',id=contest_id, name=player_name)
 
-@app.route('/<int: contest_id>/add_player', methods = ['GET'])
+@app.route('/<int: contest_id>/remove_player', methods = ['GET'])
 def show_form(contest_id):
-    return render_template('form_for_adding.html', id=contest_id)
+    return render_template('form_for_removing.html', id=contest_id)
+
+@app.route('/<int: contest_id>/remove_player/result', methods= ['POST'])
+def add_player(contest_id):
+    player_name = request.form.get('name')
+    if(add(contest_id, player_name) == -1):
+        return render_template('incorrect_page.html')
+    else:
+        return render_template('removed.html',id=contest_id, name=player_name)
+
+@app.route('/<int: contest_id>/remove_player', methods = ['GET'])
+def show_form(contest_id):
+    return render_template('form_for_removing.html', id=contest_id)
 
 
 if __name__ == '__main__':

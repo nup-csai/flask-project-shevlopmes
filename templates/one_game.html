@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>One game</title>
+</head>
+<body>
+<form action="/" method="POST">
+    <h2>First player: {{ game.first_pl }}</h2><br>
+    <h2>Second player: {{ game.second_pl }}</h2>
+    <div>
+        <label for="name"></label>
+        <input type="text" id="name" name="name" required>
+    </div>
+
+    <div>
+        <label for="email">Email:</label>
+        <input id="email" name="email" required>
+    </div>
+
+    <button type="submit">Send</button>
+</form>
+</body>
+</html>
