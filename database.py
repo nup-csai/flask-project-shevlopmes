@@ -1,7 +1,7 @@
 import sqlite3
 from threading import Lock
-
-
+from logger import Logger
+logger = Logger()
 import flask_sqlalchemy
 class Database:
     _instance = None
@@ -88,8 +88,9 @@ def add_one_game(contest_id,p1,p2):
     return d.new_game(p1,p2)
 
 def add_one_player(contest_id,p):
+    logger = Logger()
     d = Database('bbba.db')
-    print(d.player_count)
+    logger.info(str(d.player_count))
     return d.new_player(p)
 
 

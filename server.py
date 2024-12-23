@@ -1,10 +1,12 @@
 from flask import Flask, render_template, request
+import database
 from database import get_all_games
 from database import get_one_game
 from database import change_game
 from database import add_one_game
 from database import add_one_player
-
+from logger import Logger
+logger=Logger()
 #from database import get_scoreboard
 #from database import create_contest
 #from database import add
