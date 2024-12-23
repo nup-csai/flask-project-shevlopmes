@@ -2,3 +2,7 @@ Flask
 requests
 pytest
 flask_sqlalchemy
+sqlite3
+threading
+logger
+sys
