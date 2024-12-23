@@ -11,22 +11,15 @@
     <button>Go Back</button>
 </a>
 <div class="container mt-5">
-    <h1 class="mb-4">Edit Game Details</h1>
+    <h1 class="mb-4">New Game</h1>
     <form id="gameForm">
         <div class="mb-3">
-            <label for="first_sc" class="form-label">{{ game['first_pl'] }}</label>
-            <input type="number" class="form-control" id="first_sc" name="first_sc" value="{{ game['first_sc'] }}" required>
+            <label for="first_sc" class="form-label">Name of the first player</label>
+            <input type="text" class="form-control" id="first_sc" name="first_sc" value="" required>
         </div>
         <div class="mb-3">
-            <label for="second_sc" class="form-label">{{ game['second_pl'] }}</label>
-            <input type="number" class="form-control" id="second_sc" name="second_sc" value="{{ game['second_sc'] }}" required>
-        </div>
-        <div class="mb-3">
-            <label for="live" class="form-label">Live Status</label>
-            <select class="form-select" id="live" name="live">
-                <option value="1" {% if game['live'] == 1 or game['live'] == "1" %}selected{% endif %}>Active</option>
-                <option value="0" {% if game['live'] == 0 or game['live'] == "0" %}selected{% endif %}>Inactive</option>
-            </select>
+            <label for="first_sc" class="form-label">Name of the second player</label>
+            <input type="text" class="form-control" id="second_sc" name="second_sc" value="" required>
         </div>
         <button type="submit" class="btn btn-primary">Save Changes</button>
     </form>
@@ -42,7 +35,6 @@ $(document).ready(function() {
         let formData = {
             first_sc: $('#first_sc').val(),
             second_sc: $('#second_sc').val(),
-            live: $('#live').val()
         };
 
         $.ajax({

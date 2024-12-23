@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-{% extends "base_page.html" %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Games</title>
-</head>
-<body>
+
+
 {% for game in games %}
-<li><h2>{{ game.first_pl }} -- {{ game.second_pl }} {{ game.first_score }}:{{ game.second_score }}</h2>
-    {% if game.live == 1 %}
-        <h2>  live</h2>
+<li>{{ game.first_pl }} -- {{ game.second_pl }} {{ game.first_sc }}:{{ game.second_sc }}
+    {% if game.live == 1 or game.live == "1" %}
+         live
     {% endif %}
 </li>
 {% endfor %}
-</body>
-</html>
