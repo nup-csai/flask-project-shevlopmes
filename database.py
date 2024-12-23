@@ -6,27 +6,32 @@ import flask_sqlalchemy
 class Database:
     _instance = None
     _lock = Lock()
+    _initialized = False
+
     def __new__(cls, *args, **kwargs):
         if not cls._instance:
             with cls._lock:
                 if not cls._instance:
-                    cls._instance = super(Database,cls).__new__(cls)
-                    cls._instance.__init__(*args,**kwargs)
+                    cls._instance = super(Database, cls).__new__(cls)
         return cls._instance
 
-    def __init__(self,db_path=":memory:"):
-        self.conn = sqlite3.connect(db_path)
-        self.cursor = self.conn.cursor()
-        self.game_count = 0
-        self.player_count = 0
-        self._create_test()
-
+    def __init__(self, db_path=":memory:"):
+        with self._lock:
+            if not self._initialized:
+                self.conn = sqlite3.connect(db_path, check_same_thread=False)
+                self.cursor = self.conn.cursor()
+                self.game_count = 0
+                self.player_count = 0
+                self._create_test()
+                self._initialized = True
     def _create_test(self):
         self.cursor.execute('create table if not exists players (id int primary key, name text not null, status text not null)')
         self.cursor.execute('create table if not exists games (id int primary key, score_1 int, score_2 int, pl_1_id int, pl_2_id int, foreign key (pl_1_id) references players(id), foreign key (pl_2_id) references players(id))')
         self.conn.commit()
 
     def new_game(self, first_pl, second_pl):
+        logger.info(first_pl)
+        logger.info(second_pl)
         self.cursor.execute('select a.id from players a where a.name = ?', first_pl)
         id1 = self.cursor.fetchall()
         self.cursor.execute('select a.id from players a where a.name = ?', second_pl)
@@ -74,22 +79,22 @@ class Database:
 
 
 def get_all_games(contest_id):
-    d = Database('bbba.db')
+    d = Database('rebro.db')
     return d.all_games()
 def get_one_game(contest_id, game_id):
-    d = Database('bbba.db')
+    d = Database('rebro.db')
     return d.one_game(game_id)
 
 def change_game(contest_id,game_id,live_status,sc_1,sc_2):
-    d = Database('bbba.db')
+    d = Database('rebro.db')
     return d.change_game(game_id,live_status,sc_1, sc_2)
 def add_one_game(contest_id,p1,p2):
-    d = Database('bbba.db')
+    d = Database('rebro.db')
     return d.new_game(p1,p2)
 
 def add_one_player(contest_id,p):
     logger = Logger()
-    d = Database('bbba.db')
+    d = Database('rebro.db')
     logger.info(str(d.player_count))
     return d.new_player(p)
 

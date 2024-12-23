@@ -3,6 +3,4 @@ requests
 pytest
 flask_sqlalchemy
 sql
-threading
-logger
-sys
+

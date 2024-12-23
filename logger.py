@@ -6,12 +6,12 @@ class Logger:
     _instance: Optional['Logger'] = None
     _logger: Optional[logging.Logger] = None
 
-    def new(cls) -> 'Logger':
+    def __new__(cls) -> 'Logger':
         if cls._instance is None:
-            cls._instance = super().new(cls)
+            cls._instance = super().__new__(cls)
         return cls._instance
 
-    def init(self) -> None:
+    def __init__(self) -> None:
         if self._logger is None:
             # Create logger
             self._logger = logging.getLogger('app_logger')
