@@ -7,13 +7,13 @@ def main():
     else:
         print("Start page failed")
         sys.exit(1)
-    response = requests.get("http://localhost:8080/contests/0/games")
+    response = requests.get("http://localhost:8080/contests/1/games")
     if response.status_code == 200:
         print("Get first name OK")
     else:
         print("Get first name failed")
         sys.exit(1)
-    response = requests.get("http://localhost:8080/contests/0/add")
+    response = requests.get("http://localhost:8080/contests/1/add")
     if response.status_code == 200:
         print("Get all names OK")
     else:
