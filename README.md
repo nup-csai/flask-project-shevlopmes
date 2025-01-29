@@ -3,40 +3,34 @@
 
 ## Description
 
-A client-server application for organizing game schedule and leaderboard for some sport event. There are some players, a game schedule is made by some rules (i plan to make some default scenarios and a possibility to make custom one), a leaderboard is sorted by some other rules (scenarios and a possibility to make custom one) (Game scheduling may depend from previous game results). So, something like challonge.com but with more custom tie-breaks.
+A client-server application for organizing game schedule and leaderboard for some sport event. There are some players, a game schedule is made by some rules (knockout format) .Game scheduling may depend from previous game results. So, something like challonge.com.
 
 Application will be on https://flask-project-shevlopmes-production.up.railway.app/
 
 ## Setup
 
-Describe the steps to set up the environment and run the application. This can be a bash script or docker commands.
 
 ```
-docker build -t my-application .
-
-docker run -d 8080:8080 my-application
+ Build the Docker image
+      docker build . --file Dockerfile --tag first-try 
+ Run the Docker image
+       docker run -p 8080:8080 --name name first-try
 
 ```
 
 ## Requirements
 
-Python, SQL, Flask, HTML...
+Python, SQL, Flask, HTML
 
 ## Features
 
 Describe the main features the application performs.
 
-* Authorization
-* Possibility to delegate rights of moderating
-* Creating a new event
+* Creating a new event (done automatically when you write new contest_id)
 * Updating results of games
-* "On-line" mode -- you may see how would a scoreboard look like if some game ended in some result
-* Default scenarios of tournament -- Round Robin, knockout, Group stage and then knockout, Swiss
-* Default tie-breaks -- points, number of wins, point difference, ...
-* Outputting the results of games, schedule, leaderboard
-* Ability to add custom scenarios
-* Ability to add custom tie-breaks
-* Ability to change rules on the run (but games already played cannot be rescheduled)
+* Adding new games manually
+* Outputting the results of games, schedule
+* "Knockout format" -- the app automatically checks if all the games from one stage have been played so the next stage should be generated
 
 ## Git
 
@@ -45,7 +39,13 @@ project-shevlopmes
 ## Success Criteria
 
 Describe the criteria by which the success of the project can be determined
-(this will be updated in the future)
 
-* Simple authorization
-* Default scenario works
+
+* Site works well
+* Can add new player using "/contests/<contest id>/add"
+* Can add new game using "/contests/<contest id>/games/add"
+* See all games using "/contests/<contest id>/games"
+* Turn on the knockout mode using "/contests/<contest id>/knockout" -- please note that number of players should be a power of 2 and there should be no games
+* Update the result of one game using "/contests/<contest id>/games/<game id>"
+
+Please note that both indexations are 1-based.
