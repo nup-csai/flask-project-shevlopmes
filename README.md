@@ -34,7 +34,7 @@ Describe the main features the application performs.
 
 ## Git
 
-project-shevlopmes
+flask-project-shevlopmes
 
 ## Success Criteria
 
