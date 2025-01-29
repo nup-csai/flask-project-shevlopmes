@@ -5,6 +5,8 @@ from database import get_one_game
 from database import change_game
 from database import add_one_game
 from database import add_one_player
+from database import player_count
+from database import start_knockout
 from logger import Logger
 logger=Logger()
 #from database import get_scoreboard
@@ -70,8 +72,14 @@ def add_player(contest_id):
     add_one_player(contest_id,n)
     return render_template('added.html')
 
-
-
+@app.route('/contests/<int:contest_id>/knockout', methods = ['GET'])
+def initiate_knockout(contest_id):
+    player_cnt = player_count(contest_id)
+    if player_cnt.bit_count() != 1:
+        return render_template('knockout_notok.html',count = player_cnt)
+    else:
+        start_knockout(contest_id)
+        return render_template('knockout_ok.html')
 
 # @app.route('/contests/<int: contest_id>/scoreboard', methods = ['GET'])
 # def scoreboard(contest_id):
