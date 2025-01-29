@@ -18,5 +18,7 @@ jobs:
       run: docker build . --file Dockerfile --tag first-try 
     - name: Run the Docker image
       run: docker run -d -p 8080:8080 --name name first-try
+    - name: give an application a head-start
+      run: sleep 5
     - name: Test
       run: docker exec name python ./client.py
