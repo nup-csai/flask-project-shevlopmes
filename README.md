@@ -49,3 +49,6 @@ Describe the criteria by which the success of the project can be determined
 * Update the result of one game using "/contests/<contest id>/games/<game id>"
 
 Please note that both indexations are 1-based.
+
+## Video
+[here](https://www.youtube.com/watch?v=hoiXLvEHqEc)
