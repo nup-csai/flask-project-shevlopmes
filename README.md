@@ -42,11 +42,11 @@ Describe the criteria by which the success of the project can be determined
 
 
 * Site works well
-* Can add new player using "/contests/<contest id>/add"
-* Can add new game using "/contests/<contest id>/games/add"
-* See all games using "/contests/<contest id>/games"
-* Turn on the knockout mode using "/contests/<contest id>/knockout" -- please note that number of players should be a power of 2 and there should be no games
-* Update the result of one game using "/contests/<contest id>/games/<game id>"
+* Can add new player using "/contests/contest id/add"
+* Can add new game using "/contests/contest id/games/add"
+* See all games using "/contests/contest id/games"
+* Turn on the knockout mode using "/contests/contest id/knockout" -- please note that number of players should be a power of 2 and there should be no games
+* Update the result of one game using "/contests/contest id/games/game id"
 
 Please note that both indexations are 1-based.
 
